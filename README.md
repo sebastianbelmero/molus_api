@@ -173,7 +173,8 @@ http://localhost:8000/api/post
             "created_at": "2022-12-25T21:16:10.000000Z",
             "updated_at": "2022-12-25T21:16:10.000000Z"
           }
-        }
+        },
+        "liked": []
       },
       {
         "id": 2,
@@ -219,7 +220,16 @@ http://localhost:8000/api/post
             "created_at": "2022-12-25T21:16:10.000000Z",
             "updated_at": "2022-12-25T21:16:10.000000Z"
           }
-        }
+        },
+        "liked": [
+          {
+            "id": 2169,
+            "user_id": 3,
+            "post_id": 2,
+            "created_at": "2022-12-25T21:16:15.000000Z",
+            "updated_at": "2022-12-25T21:16:15.000000Z"
+          }
+        ]
       },
       {
         "id": 3,
@@ -265,7 +275,8 @@ http://localhost:8000/api/post
             "created_at": "2022-12-25T21:16:10.000000Z",
             "updated_at": "2022-12-25T21:16:10.000000Z"
           }
-        }
+        },
+        "liked": []
       },
       {
         "id": 4,
@@ -311,7 +322,8 @@ http://localhost:8000/api/post
             "created_at": "2022-12-25T21:16:10.000000Z",
             "updated_at": "2022-12-25T21:16:10.000000Z"
           }
-        }
+        },
+        "liked": []
       },
       {
         "id": 5,
@@ -357,7 +369,8 @@ http://localhost:8000/api/post
             "created_at": "2022-12-25T21:16:10.000000Z",
             "updated_at": "2022-12-25T21:16:10.000000Z"
           }
-        }
+        },
+        "liked": []
       },
       {
         "id": 6,
@@ -403,7 +416,8 @@ http://localhost:8000/api/post
             "created_at": "2022-12-25T21:16:10.000000Z",
             "updated_at": "2022-12-25T21:16:10.000000Z"
           }
-        }
+        },
+        "liked": []
       },
       {
         "id": 7,
@@ -449,7 +463,8 @@ http://localhost:8000/api/post
             "created_at": "2022-12-25T21:16:10.000000Z",
             "updated_at": "2022-12-25T21:16:10.000000Z"
           }
-        }
+        },
+        "liked": []
       },
       {
         "id": 8,
@@ -495,7 +510,8 @@ http://localhost:8000/api/post
             "created_at": "2022-12-25T21:16:10.000000Z",
             "updated_at": "2022-12-25T21:16:10.000000Z"
           }
-        }
+        },
+        "liked": []
       },
       {
         "id": 9,
@@ -541,7 +557,8 @@ http://localhost:8000/api/post
             "created_at": "2022-12-25T21:16:10.000000Z",
             "updated_at": "2022-12-25T21:16:10.000000Z"
           }
-        }
+        },
+        "liked": []
       },
       {
         "id": 10,
@@ -587,7 +604,8 @@ http://localhost:8000/api/post
             "created_at": "2022-12-25T21:16:10.000000Z",
             "updated_at": "2022-12-25T21:16:10.000000Z"
           }
-        }
+        },
+        "liked": []
       }
     ],
     "first_page_url": "http://192.168.98.67:8000/api/posts?page=1",
@@ -595,7 +613,11 @@ http://localhost:8000/api/post
     "last_page": 30,
     "last_page_url": "http://192.168.98.67:8000/api/posts?page=30",
     "links": [
-      { "url": null, "label": "&laquo; Previous", "active": false },
+      {
+        "url": null,
+        "label": "&laquo; Previous",
+        "active": false
+      },
       {
         "url": "http://192.168.98.67:8000/api/posts?page=1",
         "label": "1",
@@ -646,7 +668,11 @@ http://localhost:8000/api/post
         "label": "10",
         "active": false
       },
-      { "url": null, "label": "...", "active": false },
+      {
+        "url": null,
+        "label": "...",
+        "active": false
+      },
       {
         "url": "http://192.168.98.67:8000/api/posts?page=29",
         "label": "29",
@@ -673,7 +699,6 @@ http://localhost:8000/api/post
 }
 
 ```
-
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 

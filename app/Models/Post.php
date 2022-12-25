@@ -39,4 +39,10 @@ class Post extends Model
     {
         return $this->profile()->with('major');
     }
+
+    public function liked()
+    {
+        $liked = $this->postLikes()->where('user_id', auth()->user()->id);
+        return $liked;
+    }
 }

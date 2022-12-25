@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +21,7 @@ class PostController extends Controller
     public function index()
     {
         try {
-            $posts = Post::with(['user', 'user_profile'])->withCount(['postLikes', 'postSaveds', 'postComments'])->paginate(10);
+            $posts = Post::with(['user', 'user_profile', 'liked'])->withCount(['postLikes', 'postSaveds', 'postComments'])->paginate(10);
             return response()->json([
                 'status' => 'success',
                 'data' => $posts
