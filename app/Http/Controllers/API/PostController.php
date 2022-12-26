@@ -3,8 +3,13 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PostResource;
 use App\Models\Post;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+
+use function GuzzleHttp\Promise\each;
+use function PHPSTORM_META\map;
 
 class PostController extends Controller
 {
@@ -13,6 +18,7 @@ class PostController extends Controller
     {
         $this->middleware('auth:api');
     }
+    
     /**
      * Display a listing of the resource.
      *

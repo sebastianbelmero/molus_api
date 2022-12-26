@@ -6,9 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\PostLike;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostLikeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -39,10 +45,9 @@ class PostLikeController extends Controller
     {
         try {
             $post = Post::findOrFail($request->post_id);
-            $postLike = PostLike::where('post_id', $request->post_id)->where('user_id', $request->user_id)->first();
+            $postLike = PostLike::where('post_id', $request->post_id)->where('user_id', Auth::user()->id)->first();
             if ($postLike) {
                 $postLike->delete();
-                $post->decrement('likes');
                 return response()->json([
                     'status' => 'success',
                     'message' => 'Post unliked'
@@ -50,9 +55,8 @@ class PostLikeController extends Controller
             } else {
                 PostLike::create([
                     'post_id' => $request->post_id,
-                    'user_id' => $request->user_id
+                    'user_id' => Auth::user()->id
                 ]);
-                $post->increment('likes');
                 return response()->json([
                     'status' => 'success',
                     'message' => 'Post liked'

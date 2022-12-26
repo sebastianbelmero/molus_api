@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\FakultasController;
 use App\Http\Controllers\API\JurusanController;
 use App\Http\Controllers\API\PostController;
+use App\Http\Controllers\API\PostLikeController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,7 @@ Route::name('api.')->group(function () {
     Route::resource('fakultas', FakultasController::class);
     Route::resource('jurusan', JurusanController::class);
     Route::controller(AuthController::class)->group(function () {
+        Route::get('me', 'me');
         Route::post('login', 'login');
         Route::post('register', 'register');
         Route::post('logout', 'logout');
@@ -38,5 +40,9 @@ Route::name('api.')->group(function () {
         Route::get('posts/{post}', 'show');
         Route::put('posts/{post}', 'update');
         Route::delete('posts/{post}', 'destroy');
+    });
+
+    Route::controller(PostLikeController::class)->group(function () {
+        Route::post('post-likes', 'store');
     });
 });
