@@ -95,4 +95,14 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(PostSaved::class);
     }
+
+    public function major()
+    {
+        return $this->profile()->with('major');
+    }
+
+    public function details()
+    {
+        return $this->profile()->with('major.faculty');
+    }
 }

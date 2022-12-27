@@ -51,4 +51,5 @@ class Post extends Model
         $saved = $this->postSaveds()->where('user_id', auth()->user()->id);
         return $saved;
     }
+
 }
