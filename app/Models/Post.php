@@ -45,4 +45,10 @@ class Post extends Model
         $liked = $this->postLikes()->where('user_id', auth()->user()->id);
         return $liked;
     }
+
+    public function saveds()
+    {
+        $saved = $this->postSaveds()->where('user_id', auth()->user()->id);
+        return $saved;
+    }
 }

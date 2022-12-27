@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use App\Models\PostSaved;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostSavedController extends Controller
 {
@@ -48,11 +50,24 @@ class PostSavedController extends Controller
     public function store(Request $request)
     {
         try {
-            $postSaved = PostSaved::create($request->all());
-            return response()->json([
-                'status' => 'success',
-                'data' => $postSaved
-            ], 200);
+            $post = Post::findOrfail($request->post_id);
+            $postSaved = PostSaved::where('post_id', $request->post_id)->where('user_id', Auth::user()->id)->first();
+            if ($postSaved) {
+                $postSaved->delete();
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'Post unsaved'
+                ], 200);
+            } else {
+                PostSaved::create([
+                    'post_id' => $request->post_id,
+                    'user_id' => Auth::user()->id
+                ]);
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'Post saved'
+                ], 200);
+            }
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => 'error',

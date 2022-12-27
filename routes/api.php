@@ -4,6 +4,7 @@ use App\Http\Controllers\API\FakultasController;
 use App\Http\Controllers\API\JurusanController;
 use App\Http\Controllers\API\PostController;
 use App\Http\Controllers\API\PostLikeController;
+use App\Http\Controllers\API\PostSavedController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -44,5 +45,8 @@ Route::name('api.')->group(function () {
 
     Route::controller(PostLikeController::class)->group(function () {
         Route::post('post-likes', 'store');
+    });
+    Route::controller(PostSavedController::class)->group(function () {
+        Route::post('post-saveds', 'store');
     });
 });
