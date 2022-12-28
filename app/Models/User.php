@@ -105,4 +105,9 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->profile()->with('major.faculty');
     }
+
+    public function chat()
+    {
+        return $this->hasMany(Chat::class);
+    }
 }

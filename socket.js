@@ -1,7 +1,7 @@
-import express from 'express';
-import http from 'http';
-import { Server } from 'socket.io';
-import fetch from 'node-fetch';
+const express = require('express');
+const http = require('http');
+const { Server } = require('socket.io');
+const fetch = require('node-fetch');
 
 const app = express();
 const server = http.createServer(app);
@@ -17,7 +17,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('sendChatToServer', (msg) => {
-        const { message, token, to_user_id, url } = msg;
+        const { message, token, friend_id, url } = msg;
         fetch(url, {
             "headers": {
                 "content-type": "application/json",
@@ -25,11 +25,12 @@ io.on('connection', (socket) => {
             },
             "body": JSON.stringify({
                 "message": message,
-                "to_user_id": to_user_id
+                "friend_id": friend_id
             }),
             "method": 'POST'
         }).then(res => {
             res.json().then(data => {
+                console.log(data)
                 socket.broadcast.emit('sendChatToClient', msg);
             })
         })

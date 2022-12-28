@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\ChatController;
 use App\Http\Controllers\API\FakultasController;
 use App\Http\Controllers\API\JurusanController;
 use App\Http\Controllers\API\PostController;
@@ -48,5 +49,12 @@ Route::name('api.')->group(function () {
     });
     Route::controller(PostSavedController::class)->group(function () {
         Route::post('post-saveds', 'store');
+    });
+    Route::middleware('auth:api')->group(function () {
+        Route::controller(ChatController::class)->group(function () {
+            Route::get('chats', 'index');
+            Route::get('chats/{id}', 'show');
+            Route::post('chats', 'store');
+        });
     });
 });
