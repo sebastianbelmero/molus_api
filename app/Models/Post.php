@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,6 +10,7 @@ class Post extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+    protected $appends = ['created_at_human'];
 
     public function user()
     {
@@ -50,6 +52,11 @@ class Post extends Model
     {
         $saved = $this->postSaveds()->where('user_id', auth()->user()->id);
         return $saved;
+    }
+    
+    public function getCreatedAtHumanAttribute()
+    {
+        return Carbon::parse($this->created_at)->diffForHumans();
     }
 
 }
