@@ -21,7 +21,7 @@ io.on('connection', (socket) => {
         fetch(url, {
             "headers": {
                 "content-type": "application/json",
-                "Authorization": token
+                "Authorization": `Bearer ${token}`
             },
             "body": JSON.stringify({
                 "message": message,
