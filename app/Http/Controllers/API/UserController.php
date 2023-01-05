@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Profile;
+use App\Models\Question;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -81,5 +85,41 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function updateUserProfile(Request $request)
+    {
+        try {
+            $user = User::find(Auth::user()->id);
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->save();
+
+            $profile = Profile::where('user_id', Auth::user()->id)->first();
+            $profile->phone = $request->phone;
+            $profile->address = $request->address;
+            $profile->save();
+
+            return response()->json([
+                'user' => $user,
+                'profile' => $profile
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+
+    }
+
+    public function getQuestions()
+    {
+        try {
+            $question = Question::with('questionType')->get();
+            return response()->json([
+                'questions' => $question
+            ], 200);
+            
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 }

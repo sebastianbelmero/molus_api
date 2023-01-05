@@ -63,6 +63,23 @@ class ProfileSeeder extends Seeder
                 'updated_at' => now(),
             ];
         }
+        $alumni = User::where('role_id', 4)->get();
+        foreach ($alumni as $al) {
+            $profile[] = [
+                'user_id' => $al->id,
+                'gender' => rand(0, 1) ? 'L' : 'P',
+                'birthdate' => now()->subYears(rand(18, 30)),
+                'address' => 'Jl. ' . $this->faker->streetName . ' No. ' . rand(1, 100),
+                'phone' => '08' . rand(10000000000, 99999999999),
+                'major_id' => rand(1, 2),
+                'entry_year' => rand(2008, 2015),
+                'graduation_year' => rand(2016, 2022),
+                'job' => $this->faker->jobTitle,
+                'photo' => 'https://randomuser.me/api/portraits/men/' . rand(1, 99) . '.jpg',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ];
+        }
         Profile::insert($profile);
     }
 }

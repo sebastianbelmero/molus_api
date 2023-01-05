@@ -6,6 +6,7 @@ use App\Http\Controllers\API\JurusanController;
 use App\Http\Controllers\API\PostController;
 use App\Http\Controllers\API\PostLikeController;
 use App\Http\Controllers\API\PostSavedController;
+use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -56,5 +57,7 @@ Route::name('api.')->group(function () {
             Route::get('chats/{id}', 'show');
             Route::post('chats', 'store');
         });
+        Route::post('update-profile', [UserController::class, 'updateUserProfile'])->name('update-profile');
+        Route::get('questions', [UserController::class, 'getQuestions'])->name('questions');
     });
 });

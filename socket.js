@@ -18,6 +18,7 @@ io.on('connection', (socket) => {
 
     socket.on('sendChatToServer', (msg) => {
         const { message, token, friend_id, url } = msg;
+        console.log(msg)
         fetch(url, {
             "headers": {
                 "content-type": "application/json",

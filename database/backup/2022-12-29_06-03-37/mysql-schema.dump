@@ -30,7 +30,7 @@ CREATE TABLE `chats` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `chats` (
 
 LOCK TABLES `chats` WRITE;
 /*!40000 ALTER TABLE `chats` DISABLE KEYS */;
-INSERT INTO `chats` VALUES (1,3,53,'haloo','2022-12-28 22:47:24','2022-12-28 22:47:24'),(2,53,3,'Iya?','2022-12-28 22:47:38','2022-12-28 22:47:38'),(3,53,3,'Haiii','2022-12-28 23:01:22','2022-12-28 23:01:22'),(4,3,53,'haloo','2022-12-28 23:01:38','2022-12-28 23:01:38');
+INSERT INTO `chats` VALUES (1,3,53,'haloo','2022-12-28 22:47:24','2022-12-28 22:47:24'),(2,53,3,'Iya?','2022-12-28 22:47:38','2022-12-28 22:47:38');
 /*!40000 ALTER TABLE `chats` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -368,7 +368,7 @@ CREATE TABLE `question_types` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -377,7 +377,6 @@ CREATE TABLE `question_types` (
 
 LOCK TABLES `question_types` WRITE;
 /*!40000 ALTER TABLE `question_types` DISABLE KEYS */;
-INSERT INTO `question_types` VALUES (1,'Essay','2022-12-28 22:59:11','2022-12-28 22:59:11'),(2,'Multiple Choice','2022-12-28 22:59:11','2022-12-28 22:59:11'),(3,'True or False','2022-12-28 22:59:11','2022-12-28 22:59:11');
 /*!40000 ALTER TABLE `question_types` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -392,11 +391,11 @@ CREATE TABLE `questions` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `question_type_id` bigint(20) unsigned NOT NULL,
   `question` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `option_response` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`option_response`)),
+  `option_response` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -405,7 +404,6 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
-INSERT INTO `questions` VALUES (1,1,'Ibu Kota Negara Indonesia?',NULL,'2022-12-28 23:03:10','2022-12-28 23:03:10'),(2,2,'Ibu Kota Negara Malaysia?','[\"Kuala Lumpur\",\"Jakarta\",\"Singapore\",\"Manila\"]','2022-12-28 23:03:10','2022-12-28 23:03:10'),(3,3,'Apakah Indonesia merupakan negara kepulauan?','[\"Ya\",\"Tidak\"]','2022-12-28 23:03:10','2022-12-28 23:03:10');
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -506,4 +504,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-29 13:03:37
+-- Dump completed on 2022-12-29 12:54:15

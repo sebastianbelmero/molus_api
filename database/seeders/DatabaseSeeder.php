@@ -33,6 +33,8 @@ class DatabaseSeeder extends Seeder
             PostSavedSeeder::class,
             PostCommentSeeder::class,
             ProfileSeeder::class,
+            QuestionTypeSeeder::class,
+            QuestionSeeder::class,
         ]);
     }
 }

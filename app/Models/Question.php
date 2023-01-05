@@ -9,4 +9,14 @@ class Question extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function questionType()
+    {
+        return $this->belongsTo(QuestionType::class);
+    }
+
+    public function responses()
+    {
+        return $this->hasMany(Response::class);
+    }
 }

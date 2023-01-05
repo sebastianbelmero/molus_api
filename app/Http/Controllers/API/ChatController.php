@@ -56,15 +56,13 @@ class ChatController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->headers->set('Accept', 'application/json');
-        $data = $request->getContent();
         try {
-            // $chat = Chat::create([
-            //     'user_id' => auth()->user()->id,
-            //     'friend_id' => $data['friend_id'],
-            //     'message' => $data['message'],
-            // ]);
-            return response()->json($data, 200);
+            $chat = Chat::create([
+                'user_id' => auth()->user()->id,
+                'friend_id' => $request->friend_id,
+                'message' => $request->message
+            ]);
+            return response()->json($chat, 200);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
